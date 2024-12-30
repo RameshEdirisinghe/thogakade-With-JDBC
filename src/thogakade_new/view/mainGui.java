@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import thogakade_new.Controller.PlaceOrderController;
 import thogakade_new.Model.Customer;
 import thogakade_new.Model.Item;
+import thogakade_new.Model.OrderDetail;
 import thogakade_new.Model.Orders;
 
 /**
@@ -324,12 +325,36 @@ public class mainGui extends javax.swing.JFrame {
 
     private void btnNewCusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCusActionPerformed
         // TODO add your handling code here:
+        new AddCustomer().setVisible(true);
     }//GEN-LAST:event_btnNewCusActionPerformed
 
     private void btnPlaceOdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOdrActionPerformed
         // TODO add your handling code here:
-        Orders orders = new Orders();
-        PlaceOrderController.orderPlaced( orders);
+        
+        DefaultTableModel dtm = (DefaultTableModel) tblCart.getModel();
+        ArrayList<OrderDetail> orderDetailList = new ArrayList<>();
+        for(int i=0; i<tblCart.getRowCount();i++){
+            OrderDetail orderDetail = new OrderDetail(lblOrderId.getText(),dtm.getValueAt(i, 0).toString(),(int)dtm.getValueAt(i,2 ),(double)dtm.getValueAt(i, 3));
+            orderDetailList.add(orderDetail);
+        }
+        Orders orders = new Orders(lblOrderId.getText(),dateField.getText(),(String)comboBoxCus.getSelectedItem(),orderDetailList);
+        
+        try {
+            boolean isupdated = PlaceOrderController.orderPlaced( orders);
+            if(isupdated){
+                JOptionPane.showMessageDialog(null, "done");
+                dispose();
+                new mainGui().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Fail");
+                dispose();
+                new mainGui().setVisible(true);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(mainGui.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(mainGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnPlaceOdrActionPerformed
 
@@ -366,6 +391,8 @@ public class mainGui extends javax.swing.JFrame {
         lbl2.setText(String.valueOf(total));
     }
     private void btnAddOdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOdrActionPerformed
+        
+       
         DefaultTableModel dtm = (DefaultTableModel) tblCart.getModel();
         
         int qty = Integer.parseInt(txtFieldQty.getText());
@@ -390,6 +417,7 @@ public class mainGui extends javax.swing.JFrame {
             tblCart.setValueAt(qty, row, 2);
             tblCart.setValueAt(total,row,4);
         }
+         calculateTotal();
     }//GEN-LAST:event_btnAddOdrActionPerformed
 
     private void btnRemoveOdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOdrActionPerformed
@@ -397,6 +425,7 @@ public class mainGui extends javax.swing.JFrame {
         DefaultTableModel dtm = (DefaultTableModel)tblCart.getModel();
         int selectedRow = tblCart.getSelectedRow();
         dtm.removeRow(selectedRow);
+        calculateTotal();
     }//GEN-LAST:event_btnRemoveOdrActionPerformed
 
     /**

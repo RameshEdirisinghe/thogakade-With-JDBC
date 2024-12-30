@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Controller/PlaceOrderController.java</file>
-            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Model/Customer.java</file>
-            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/view/mainGui.java</file>
             <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Model/Item.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Controller/OrderDetailController.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/view/mainGui.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Controller/PlaceOrderController.java</file>
             <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/ThogaKade_NEW.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Controller/ItemController.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/view/AddCustomer.java</file>
             <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/DBConnection/DBConnection.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Model/Customer.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Model/Orders.java</file>
+            <file>file:/C:/Users/ranga/Documents/NetBeansProjects/ThogaKade_NEW/src/thogakade_new/Model/OrderDetail.java</file>
         </group>
     </open-files>
 </project-private>

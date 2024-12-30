@@ -88,7 +88,7 @@ public class PlaceOrderController {
         return customer;
     }
     
-    public static boolean orderPlaced(Orders order) throws SQLException{
+    public static boolean orderPlaced(Orders order) throws SQLException, ClassNotFoundException{
         Connection connection = DBConnection.getInstance().getConnection();
         
         try {
@@ -99,10 +99,21 @@ public class PlaceOrderController {
             stm.setObject(3, order.getCusId());
             boolean isAdded = stm.executeUpdate()>0;
             if(isAdded){
-                
+                boolean isAddedOrderDetail = OrderDetailController.addOrderDetail(order.getOrderDetailList());
+                if(isAddedOrderDetail){
+                    boolean isAddItem = ItemController.updateItem(order.getOrderDetailList());
+                    
+                    if(isAddItem){
+                        connection.commit();
+                        return true;
+                    }
+                }
             }
+            connection.rollback();
+            return false;
         } finally {
+            connection.setAutoCommit(true);
         }
-        return true;
+     
     }
 }
